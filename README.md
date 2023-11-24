@@ -1,44 +1,44 @@
 # Node.js server template project with Express, PostgreSQL and TypeScript.
-Installation
+## Installation
 
 Clone the repo:
 bash
 
 git clone https://github.com/yourname/node-express-pg-typescript.git
 
-Install dependencies:
+## Install dependencies:
 bash
 
 npm install
 
-Scripts
+## Scripts
 
 Start development server:
 bash
 
 npm run dev
 
-Run tests:
+## Run tests:
 bash
 
 npm test
 
-Lint code:
+## Lint code:
 bash
 
 npm run lint
 
-Build for production:
+## Build for production:
 bash
 
 npm run build
 
-Start production server:
+## Start production server:
 bash
 
 npm start
 
-Features
+## Features
 
     Node.js server with Express
     PostgreSQL database with TypeORM
@@ -50,16 +50,16 @@ Features
     Code linting with ESLint
     Built with TypeScript
 
-Environment Variables
+## Environment Variables
 
 Create a .env file based on the .env.example to set required environment variables:
 
     DATABASE_URL - PostgreSQL database URI
     PORT - Server port
 
-Documentation
+## Documentation
 
 Swagger documentation available at /docs endpoint.
 License
 
-MIT © Your Name
+MIT © electrics.sheeps@gmail.com
