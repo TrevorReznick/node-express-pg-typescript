@@ -19,8 +19,6 @@ export class Model {
         return await pool.query('SELECT * FROM test')
     }
 
-
-
     static async findById(id: number) {
         // query 
     }
