@@ -1,4 +1,4 @@
-#Node.js server template project with Express, PostgreSQL and TypeScript.
+# Node.js server template project with Express, PostgreSQL and TypeScript.
 Installation
 
 Clone the repo:
