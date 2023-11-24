@@ -21,10 +21,28 @@ export class MainController {
             res.status(500).send(err)
         }
     }
+
+    static testApi(req: Request, res: Response) {
+        try{
+            const message = 'Hello from api'
+            res.send(message)
+        } catch(err) {
+            res.status(500).send(err)
+        }
+    }
+
+    static home(req: Request, res: Response) {
+        try{
+            const message = 'Welcome to node-server application'
+            res.send(message)
+        } catch(err) {
+            res.status(500).send(err)
+        }
+    }
 }
 
 
-  /*async getById(req: Request, res: Response) {
+/*async getById(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);  
       const user = await UserModel.getById(id);
@@ -32,8 +50,8 @@ export class MainController {
     } catch (err) {
       res.status(500).send(err);
     }
-  }
-  */
+ }
+*/
 
 
 

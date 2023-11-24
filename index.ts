@@ -1,24 +1,24 @@
 import express, { Express, Request, Response } from 'express'
-import {test} from './app/routes/index'
-
-
-import dotenv from 'dotenv'
+import dotenv from 'dotenv' 
+import router from './app/routes/index'
+import {MainController} from './app/controllers/index'
 
 dotenv.config()
 
 const app: Express = express()
 const port = process.env.PORT
 
-app.get('/', (req, res) => { // Welcome Mesage
-  res.send('Express + TypeScript Server')
-})
+app.use('/api', router)
 
-/* @@ import Routes @@ */
-app.get('/test', test)
+/* @@ test message @@ */
+app.get("/", MainController.home)
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`)
 })
+
+
+
 
 
 
