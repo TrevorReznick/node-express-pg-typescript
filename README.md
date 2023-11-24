@@ -1,7 +1,4 @@
-Ecco il README con la sintassi markdown:
-Node.js project template
-
-Node.js server template project with Express, PostgreSQL and TypeScript.
+#Node.js server template project with Express, PostgreSQL and TypeScript.
 Installation
 
 Clone the repo:
