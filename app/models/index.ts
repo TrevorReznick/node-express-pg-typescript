@@ -15,12 +15,11 @@ export class Model {
     cognome: string
     email: string
 
-    static async test() {
+    static async queryAll() {
         return await pool.query('SELECT * FROM users')
     }
-
-    static async findById(id: number) {
-        // query 
+    static async queryById(id: number) {
+        return await pool.query('SELECT * FROM users WHERE id = $1', [id])
     }
     static async create(model: Model) {
         // insert query

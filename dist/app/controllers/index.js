@@ -23,6 +23,25 @@ class MainController {
             }
         });
     }
+    static getById(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = req.params.id;
+            if (!req.params.id) {
+                return res.status(400).send('Id parameter is required');
+            }
+            else {
+                const user = yield index_1.Model.findById(id)
+                    .catch(err => {
+                    res.status(500).send(err);
+                });
+                if (!user) {
+                    return res.status(404).send('User not found');
+                }
+                else
+                    res.send(user);
+            }
+        });
+    }
     static testApi(req, res) {
         try {
             const message = 'Hello from api';

@@ -20,12 +20,12 @@ class Model {
     }
     static test() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield index_1.pool.query('SELECT * FROM test');
+            return yield index_1.pool.query('SELECT * FROM users');
         });
     }
     static findById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            // query 
+            return yield index_1.pool.query('SELECT * FROM users WHERE id = $1', [id]);
         });
     }
     static create(model) {

@@ -1,12 +1,14 @@
 import express from 'express'
-import { Request, Response} from 'express'
-import { MainController } from '../controllers'
+//import { Request, Response} from 'express'
+import { MainController as main} from '../controllers'
 
 const router = express.Router()
 
-router.get('/', MainController.home)
-router.get('/test-db', MainController.getAll)
-router.get('/test-api', MainController.testApi)
+
+router.get('/', main.home)
+router.get('/test-db', main.getAllUsers)
+router.get('/test-api', main.testApi)
+router.get('/find-user/:id', main.getById)
 
 export default router
 
