@@ -16,7 +16,7 @@ export class Model {
     email: string
 
     static async test() {
-        return await pool.query('SELECT * FROM test')
+        return await pool.query('SELECT * FROM users')
     }
 
     static async findById(id: number) {
