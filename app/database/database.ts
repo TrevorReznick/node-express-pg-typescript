@@ -7,9 +7,9 @@ export class Database {
     private client: Client
   
     constructor() {
-        this.client = new Client({
-            connectionString: db_url
-        })
+      this.client = new Client({
+        connectionString: db_url
+      })
     }
   
     async connect() {

@@ -12,10 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MainController = void 0;
 const index_1 = require("../models/index");
 class MainController {
-    static getAll(req, res) {
+    static home(req, res) {
+        try {
+            const message = 'Welcome to node-server application';
+            res.send(message);
+        }
+        catch (err) {
+            res.status(500).send(err);
+        }
+    }
+    static getAllUsers(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const users = yield index_1.Model.test();
+                const users = yield index_1.Model.queryAll();
                 res.send(users);
             }
             catch (err) {
@@ -30,7 +39,7 @@ class MainController {
                 return res.status(400).send('Id parameter is required');
             }
             else {
-                const user = yield index_1.Model.findById(id)
+                const user = yield index_1.Model.queryById(id)
                     .catch(err => {
                     res.status(500).send(err);
                 });
@@ -45,15 +54,6 @@ class MainController {
     static testApi(req, res) {
         try {
             const message = 'Hello from api';
-            res.send(message);
-        }
-        catch (err) {
-            res.status(500).send(err);
-        }
-    }
-    static home(req, res) {
-        try {
-            const message = 'Welcome to node-server application';
             res.send(message);
         }
         catch (err) {

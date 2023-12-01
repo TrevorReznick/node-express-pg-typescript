@@ -18,12 +18,12 @@ class Model {
         this.cognome = data.cognome;
         this.email = data.email;
     }
-    static test() {
+    static queryAll() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield index_1.pool.query('SELECT * FROM users');
         });
     }
-    static findById(id) {
+    static queryById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield index_1.pool.query('SELECT * FROM users WHERE id = $1', [id]);
         });

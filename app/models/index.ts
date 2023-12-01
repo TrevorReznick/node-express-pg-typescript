@@ -1,5 +1,5 @@
 import { pool } from '../database/index'
-import { UserModel } from '../interfaces/index'
+import { UserModel } from '../interfaces/UsersModel'
 
 //const pool = new Pool()
 
