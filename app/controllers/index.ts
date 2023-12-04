@@ -1,4 +1,6 @@
 import { Model } from '../models/index'
+import Response from 'express';
+import {__email as msg, do_mail as mailer} from '../scripts/mailer'
 
 interface Request {
     params: {
@@ -47,6 +49,15 @@ export class MainController {
     static testApi(req: Request, res: Response) {
         try{
             const message = 'Hello from api'
+            res.send(message)
+        } catch(err) {
+            res.status(500).send(err)
+        }
+    }
+    static testMail(req: Request, res: Response) {
+        try{
+            mailer(msg)
+            const message = 'Message sent successully! Check your email.'
             res.send(message)
         } catch(err) {
             res.status(500).send(err)

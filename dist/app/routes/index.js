@@ -11,6 +11,7 @@ router.get('/', controllers_1.MainController.home);
 router.get('/test-db', controllers_1.MainController.getAllUsers);
 router.get('/test-api', controllers_1.MainController.testApi);
 router.get('/find-user/:id', controllers_1.MainController.getById);
+router.get('/test-mail', controllers_1.MainController.testMail);
 exports.default = router;
 /*
 export function test(req: Request, res: Response) {

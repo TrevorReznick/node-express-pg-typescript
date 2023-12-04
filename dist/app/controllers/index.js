@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MainController = void 0;
 const index_1 = require("../models/index");
+const mailer_1 = require("../scripts/mailer");
 class MainController {
     static home(req, res) {
         try {
@@ -54,6 +55,16 @@ class MainController {
     static testApi(req, res) {
         try {
             const message = 'Hello from api';
+            res.send(message);
+        }
+        catch (err) {
+            res.status(500).send(err);
+        }
+    }
+    static testMail(req, res) {
+        try {
+            (0, mailer_1.do_mail)(mailer_1.__email);
+            const message = 'Message sent successully! Check your email.';
             res.send(message);
         }
         catch (err) {

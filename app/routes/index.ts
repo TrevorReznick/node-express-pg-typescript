@@ -9,6 +9,7 @@ router.get('/', main.home)
 router.get('/test-db', main.getAllUsers)
 router.get('/test-api', main.testApi)
 router.get('/find-user/:id', main.getById)
+router.get('/test-mail', main.testMail)
 
 export default router
 

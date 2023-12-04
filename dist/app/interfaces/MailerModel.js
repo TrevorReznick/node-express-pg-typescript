@@ -1,20 +1,27 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MailMessage = void 0;
+exports.TrasporterConfig = exports.MailMessage = void 0;
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 class MailMessage {
     constructor(msg) {
-        this._to = msg.to;
-        this._from = msg.from;
-        this._subject = msg.subject;
-        this._text = msg.text;
-    }
-    msg() {
-        return {
-            'to': this._to,
-            'from': this._from,
-            'subject': this._subject,
-            'text': this._text
-        };
+        this.to = msg._to;
+        this.from = msg._from;
+        this.subject = msg._subject;
+        this.text = msg._text;
     }
 }
 exports.MailMessage = MailMessage;
+class TrasporterConfig {
+    constructor(config) {
+        this.service = config._service;
+        this.user = config.auth._user;
+        this.pass = config.auth._pass;
+        this.logger = config._logger;
+        this.debug = config._debug;
+    }
+}
+exports.TrasporterConfig = TrasporterConfig;

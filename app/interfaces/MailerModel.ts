@@ -1,43 +1,62 @@
+import dotenv from 'dotenv'
+dotenv.config()
+
+/* @@ message model @@ */
 interface MessageModel {    
-    to: string,
-    from: string,
-    subject: string,
-    text: string
+    _to: string,
+    _from: string,
+    _subject: string,
+    _text: string
 }
 
 export class MailMessage {
 
     constructor(msg: MessageModel) {
-        this._to = msg.to
-        this._from = msg.from
-        this._subject = msg.subject
-        this._text = msg.text
+        this.to = msg._to
+        this.from = msg._from
+        this.subject = msg._subject
+        this.text = msg._text
     }
 
-    _to: string
-    _from: string
-    _subject: string
-    _text: string
-
-    public msg(): object {
-        return {
-            'to': this._to,
-            'from': this._from,
-            'subject': this._subject,
-            'text': this._text
-        }
-    }
+    to: string
+    from: string
+    subject: string
+    text: string
 }
+    
 
-
-
-
-export interface TransportOptions {
-    host: string,
-    port: number,
-    secure: boolean,
+/* @@ trasport model @@ */
+interface TrasporterModel {
+    _service: string,
+    _host?: string,
+    _port?: number,
     auth: {
-        user: string
-        pass: string
-    }
+        _user: string,
+        _pass: string
+    },
+    _secure?: boolean,
+    _requireTLS?: boolean,
+    _logger: boolean
+    _debug: boolean
 }
+
+export class TrasporterConfig {
+
+    constructor(config: TrasporterModel) {
+        this.service = config._service        
+        this.user = config.auth._user
+        this.pass = config.auth._pass        
+        this.logger = config._logger
+        this.debug = config._debug
+    }
+
+    service: string    
+    user: string
+    pass: string    
+    logger: boolean
+    debug: boolean
+
+}
+
+
+
