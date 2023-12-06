@@ -12,6 +12,7 @@ class MailMessage {
         this.from = msg._from;
         this.subject = msg._subject;
         this.text = msg._text;
+        this.name = msg._name || 'DefaultName'; // Utilizza un valore di default se _name non è fornito
     }
 }
 exports.MailMessage = MailMessage;

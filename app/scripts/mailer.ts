@@ -27,7 +27,7 @@ const wrapedSendMail = async (obj: object) => {
         pass: process.env.MAIL_AUTH_PASSWORD
       },
       logger: true,
-      debug: true
+      debug: false
     })
     //let email = mail(to, subject, text)
     transporter.sendMail(obj, function(error, info){

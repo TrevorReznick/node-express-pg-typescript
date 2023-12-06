@@ -29,7 +29,6 @@ const do_mail = (_email) => __awaiter(void 0, void 0, void 0, function* () {
     //console.log(obj)
 });
 exports.do_mail = do_mail;
-
 const wrapedSendMail = (obj) => __awaiter(void 0, void 0, void 0, function* () {
     //console.log(email)
     return new Promise((resolve, reject) => {
@@ -40,7 +39,7 @@ const wrapedSendMail = (obj) => __awaiter(void 0, void 0, void 0, function* () {
                 pass: process.env.MAIL_AUTH_PASSWORD
             },
             logger: true,
-            debug: true
+            debug: false
         });
         //let email = mail(to, subject, text)
         transporter.sendMail(obj, function (error, info) {
@@ -60,8 +59,3 @@ const sendmail = () => __awaiter(void 0, void 0, void 0, function* () {
     let resp = yield wrapedSendMail(__email);
     return resp;
 });
-/*
-const host = process.env.MAIL_HOST
-const user = process.env.MAIL_AUTH_USER
-const pass = process.env.MAIL_AUTH_PASSWORD
-*/

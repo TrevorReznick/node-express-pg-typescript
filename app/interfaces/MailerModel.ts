@@ -2,11 +2,13 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 /* @@ message model @@ */
-interface MessageModel {    
+interface MessageModel {
     _to: string,
     _from: string,
     _subject: string,
-    _text: string
+    _text: string,
+    _name?: string
+    
 }
 
 export class MailMessage {
@@ -16,12 +18,15 @@ export class MailMessage {
         this.from = msg._from
         this.subject = msg._subject
         this.text = msg._text
+        this.name = msg._name || 'DefaultName'; // Utilizza un valore di default se _name non è fornito
     }
 
     to: string
     from: string
     subject: string
     text: string
+    name: string
+    
 }
     
 

@@ -4,12 +4,20 @@ import { MainController as main} from '../controllers'
 
 const router = express.Router()
 
-
 router.get('/', main.home)
 router.get('/test-db', main.getAllUsers)
 router.get('/test-api', main.testApi)
 router.get('/find-user/:id', main.getById)
 router.get('/test-mail', main.testMail)
+router.post('/send-email', main.sendMail as any)
+
+/* test route params 
+router.post('/send-email', (req, res) => {
+  console.log('Request Body:', req.body);
+
+  // Resto del codice del tuo gestore di route
+})
+*/
 
 export default router
 
