@@ -62,7 +62,7 @@ class MainController {
             res.status(500).send(err);
         }
     }
-    static testMail(req, res) {
+    static testMailer(req, res) {
         try {
             (0, mailer_1.do_mail)(mailer_1.__email);
             const message = 'Message sent successully! Check your email.';

@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 import router from './app/routes/index'
 import {MainController as main} from './app/controllers/index'
 /* test emails classes */
-import {__email, do_mail} from './app/scripts/mailer'
+//import {__email, do_mail} from './app/scripts/mailer'
 
 dotenv.config()
 
@@ -13,27 +13,30 @@ const app: Express = express()
 
 /* @@ init cors */
 const corsOptions: any = {
-  origin: ''
+  origin: '*'
 }
+/*
 if (process.env.NODE_ENV == 'production') {
   corsOptions.origin = process.env.API_URL_PROD
 } else {
   corsOptions.origin = process.env.API_URL_DEV
-}  
+} 
+*/ 
 app.use(cors(corsOptions))
 
+/* @@ set application/x-www-form-urlencoded @@ */
 app.use(express.json())
-app.use(express.urlencoded({ extended: true })) // parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }))
 
+/* @@ define application port @@ */
 const port = process.env.PORT
 
 /* @@ init router @@ */
 app.use('/api', router)
-/* welcome message */
-app.get("/", main.home)
+app.get("/", main.home) //welcome message
 
 
-
+/* @@ init app listen @@ */
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`)
 })

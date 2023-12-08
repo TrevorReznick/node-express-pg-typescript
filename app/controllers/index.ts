@@ -9,8 +9,7 @@ interface RequestById {
     }
 }
 
-interface RequestMail {
-    
+interface RequestMail {    
     body: {
         email: string,        
         subject: string,        
@@ -57,28 +56,9 @@ export class MainController {
             else res.send(user)
         }
     }
-    static testApi(req: RequestById, res: Response) {
-        try{
-            const message = 'Hello from api'
-            res.send(message)
-        } catch(err) {
-            res.status(500).send(err)
-        }
-    }
-    static testMail(req: RequestById, res: Response) {
-        try{
-            mailer(msg)
-            const message = 'Message sent successully! Check your email.'
-            res.send(message)
-        } catch(err) {
-            res.status(500).send(err)
-        }
-    }
     static sendMail(req: RequestMail, res: Response) {
 
         console.log('Request Body:', req.body)
-
-
         const msg = new MailMessage({
             _to: req.body.email,
             _from: 'double.facessss@gmail.com',
@@ -93,7 +73,27 @@ export class MainController {
         } catch(err) {
             res.status(500).send(err)
         }
-    }   
+    }
+    /* @@ test requests @@ */
+    static testApi(req: RequestById, res: Response) {
+
+        try{
+            const message = 'Hello from api'
+            res.send(message)
+        } catch(err) {
+            res.status(500).send(err)
+        }
+    }
+    static testMailer(req: RequestById, res: Response) {
+        
+        try{
+            mailer(msg)
+            const message = 'Message sent successully! Check your email.'
+            res.send(message)
+        } catch(err) {
+            res.status(500).send(err)
+        }
+    }
 }
 
 
