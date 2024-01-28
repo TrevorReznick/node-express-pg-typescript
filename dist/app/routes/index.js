@@ -13,6 +13,8 @@ router.get('/test-api', controllers_1.MainController.testApi);
 router.get('/find-user/:id', controllers_1.MainController.getById);
 router.get('/test-mail', controllers_1.MainController.testMailer);
 router.post('/send-email', controllers_1.MainController.sendMail);
+/* @@ new route @@ */
+router.post('/generate', controllers_1.MainController.doImage);
 /* test route params
 router.post('/send-email', (req, res) => {
   console.log('Request Body:', req.body);

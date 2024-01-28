@@ -2,7 +2,10 @@ import { Model } from '../models/index'
 import Response from 'express';
 import {__email as msg, do_mail as mailer} from '../scripts/mailer'
 import { MailMessage } from '../interfaces/MailerModel'
+import { generateImage } from '../scripts/imageGenerator'
 
+
+/* @@ request interfaces @@ */
 interface RequestById {
     params: {
         id: number
@@ -15,6 +18,12 @@ interface RequestMail {
         subject: string,        
         text: string,
         name: string
+    }
+}
+
+export interface RequestPrompt {
+    params: {
+        prompt: string
     }
 }
 
@@ -94,6 +103,20 @@ export class MainController {
             res.status(500).send(err)
         }
     }
+    /* @@ huggingface transformers @@ */
+
+    static doImage(req: RequestPrompt, res: Response) {
+
+        try {
+            generateImage("photo of a basketball decorated with a palestinian flag")
+            const message = 'Image was created successully! Check in your public path'
+            res.send(message)
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+
 }
 
 

@@ -10,6 +10,8 @@ router.get('/test-api', main.testApi)
 router.get('/find-user/:id', main.getById)
 router.get('/test-mail', main.testMailer)
 router.post('/send-email', main.sendMail as any)
+/* @@ new route @@ */
+router.post('/generate', main.doImage)
 
 /* test route params 
 router.post('/send-email', (req, res) => {
