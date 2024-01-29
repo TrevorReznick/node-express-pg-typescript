@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export async function doChat(msgObj: any[]) {
     // Assicurati che msgObj contenga un array di oggetti con le proprietà 'role' e 'message'
+    /*
     const previousMessages: { role: string; message: string }[] = msgObj;
 
     // Non è necessario utilizzare concat se previousMessages è già un array
@@ -39,9 +40,10 @@ export async function doChat(msgObj: any[]) {
         const res = await req.json()
         const result = res.choices[0]
         return result /*message: result.text*/
+    /*    
     } catch (error) {
         throw error
-    }
+    }*/
 }
     
     
@@ -49,4 +51,4 @@ export async function doChat(msgObj: any[]) {
     
     
     
-}
+
