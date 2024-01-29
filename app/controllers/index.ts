@@ -3,6 +3,7 @@ import Response from 'express';
 import {__email as msg, do_mail as mailer} from '../scripts/mailer'
 import { MailMessage } from '../interfaces/MailerModel'
 import { generateImage } from '../scripts/imageGenerator'
+import { doChat } from '../scripts/chatGpt'
 
 
 /* @@ request interfaces @@ */
@@ -21,10 +22,13 @@ interface RequestMail {
     }
 }
 
+type MessageType = {
+    role: string;
+    message: string;
+}
+
 export interface RequestPrompt {
-    params: {
-        prompt: string
-    }
+    body: MessageType[]
 }
 
 interface Response {
@@ -115,6 +119,19 @@ export class MainController {
             console.log(e)
         }
 
+    }
+
+    /* @@ chat GPT @@ */
+
+    static doGptChat(req:RequestPrompt, res: Response) {
+
+        const messageObj = req.body
+
+        try {
+            doChat(messageObj)
+        } catch(e) {
+
+        }
     }
 
 }

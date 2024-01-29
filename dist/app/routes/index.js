@@ -15,6 +15,7 @@ router.get('/test-mail', controllers_1.MainController.testMailer);
 router.post('/send-email', controllers_1.MainController.sendMail);
 /* @@ new route @@ */
 router.post('/generate', controllers_1.MainController.doImage);
+router.post('/chat', controllers_1.MainController.doGptChat);
 /* test route params
 router.post('/send-email', (req, res) => {
   console.log('Request Body:', req.body);

@@ -14,6 +14,7 @@ const index_1 = require("../models/index");
 const mailer_1 = require("../scripts/mailer");
 const MailerModel_1 = require("../interfaces/MailerModel");
 const imageGenerator_1 = require("../scripts/imageGenerator");
+const chatGpt_1 = require("../scripts/chatGpt");
 class MainController {
     static home(req, res) {
         try {
@@ -101,6 +102,15 @@ class MainController {
         }
         catch (e) {
             console.log(e);
+        }
+    }
+    /* @@ chat GPT @@ */
+    static doGptChat(req, res) {
+        const messageObj = req.body;
+        try {
+            (0, chatGpt_1.doChat)(messageObj);
+        }
+        catch (e) {
         }
     }
 }

@@ -12,6 +12,7 @@ router.get('/test-mail', main.testMailer)
 router.post('/send-email', main.sendMail as any)
 /* @@ new route @@ */
 router.post('/generate', main.doImage)
+router.post('/chat', main.doGptChat)
 
 /* test route params 
 router.post('/send-email', (req, res) => {
