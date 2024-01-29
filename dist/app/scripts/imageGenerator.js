@@ -22,7 +22,8 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0";
 const headers = {
-    Authorization: "Bearer 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",
+    //Authorization: "Bearer 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",
+    Authorization: 'Bearer ' + process.env.HF_ACCESS_TOKEN
 };
 function query(data) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -51,7 +52,8 @@ function generateImage(caption) {
             console.log(`Image saved to: ${filePath}`);
         }
         catch (error) {
-            console.error(error);
+            console.log('function pass from here, is error');
+            console.log(error);
         }
     });
 }

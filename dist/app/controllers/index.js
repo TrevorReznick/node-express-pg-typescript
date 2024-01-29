@@ -96,7 +96,7 @@ class MainController {
     /* @@ huggingface transformers @@ */
     static doImage(req, res) {
         try {
-            (0, imageGenerator_1.generateImage)("photo of a basketball decorated with a palestinian flag");
+            (0, imageGenerator_1.generateImage)("photo of a bridge up a river");
             const message = 'Image was created successully! Check in your public path';
             res.send(message);
         }

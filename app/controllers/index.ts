@@ -112,7 +112,7 @@ export class MainController {
     static doImage(req: RequestPrompt, res: Response) {
 
         try {
-            generateImage("photo of a basketball decorated with a palestinian flag")
+            generateImage("photo of a bridge up a river")
             const message = 'Image was created successully! Check in your public path'
             res.send(message)
         } catch (e) {

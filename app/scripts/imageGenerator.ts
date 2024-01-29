@@ -7,11 +7,11 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const API_URL =
-    "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+const API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
 
 const headers = {
-    Authorization: "Bearer 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",
+    //Authorization: "Bearer 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",
+    Authorization: 'Bearer ' + process.env.HF_ACCESS_TOKEN
 }
 
 async function query(data: any): Promise<ArrayBuffer> {
@@ -38,6 +38,7 @@ export async function generateImage(caption: string) {
         await fs.writeFile(filePath, Buffer.from(imageBytes));
         console.log(`Image saved to: ${filePath}`);
     } catch (error) {
-        console.error(error)
+        console.log('function pass from here, is error')
+        console.log(error)
     }
 }
