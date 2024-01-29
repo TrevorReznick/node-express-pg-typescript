@@ -10,8 +10,9 @@ router.get('/test-api', main.testApi)
 router.get('/find-user/:id', main.getById)
 router.get('/test-mail', main.testMailer)
 router.post('/send-email', main.sendMail as any)
-/* @@ new route @@ */
+/* @@ new routes @@ */
 router.post('/generate', main.doImage)
+router.post('/get-img', main.getImage)
 router.post('/chat', main.doGptChat)
 
 /* test route params 

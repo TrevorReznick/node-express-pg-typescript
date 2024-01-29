@@ -33,12 +33,73 @@ export async function generateImage(caption: string) {
             inputs: caption,
         })
         // Generate a file name with the caption and save the image
-        const fileName = `${caption.replace(/\s+/g, "-")}.png`;
+        const fileName = `${caption.replace(/\s+/g, "-")}.png`
         const filePath = "./test/" + fileName
         await fs.writeFile(filePath, Buffer.from(imageBytes));
-        console.log(`Image saved to: ${filePath}`);
+        console.log(`Image saved to: ${filePath}`)
     } catch (error) {
         console.log('function pass from here, is error')
         console.log(error)
     }
+}
+
+export async function getImage(caption: string) {
+
+    try {
+        const imageBytes = await query({
+            inputs: caption,
+        })
+        // Generate a file name with the caption and save the image
+        const fileName = `${caption.replace(/\s+/g, "-")}.png`
+        const filePath = "./test/" + fileName
+
+        const encodedBuffer = Buffer.from(imageBytes).toString('base64')
+
+        console.log(encodedBuffer)
+        
+        return encodedBuffer 
+               
+    } catch (error) {
+        console.log('function pass from here, is error')
+        console.log(error)
+    }
+
+
+    
+    /*
+    try {
+
+        const imageBytes = await query({
+            inputs: caption,
+        })
+        const fileName = `${caption.replace(/\s+/g, "-")}.png`
+    
+        // Send image file as response
+        res.writeHead(200, {
+          'Content-Type': 'image/png',
+          'Content-Length': imageBytes.length
+        });
+    
+        res.send(imageBytes);
+    
+      } catch (error) {
+        console.error(error);
+        res.status(500).end('Error generating image');
+      }
+    
+    }
+    
+    // Usage:
+    app.get('/image', async (req, res) => {
+    
+      const imageBytes = await generateImage('My Caption');
+    
+      await sendGeneratedImage(imageBytes, res);
+    
+    });
+    
+    // With curl:
+    curl http://localhost:3000/image > image.png
+    */
+    
 }

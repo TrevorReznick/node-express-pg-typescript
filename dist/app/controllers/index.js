@@ -104,6 +104,20 @@ class MainController {
             console.log(e);
         }
     }
+    static getImage(req, res) {
+        try {
+            //generateImage("photo of a great boat in a river")
+            console.log('call img buffer');
+            const image64base = (0, imageGenerator_1.getImage)('photo of a great boat in a river');
+            //const message = 'Image was created successully! Check in your public path'
+            console.log('send img 64base');
+            console.log(image64base);
+            res.send(image64base);
+        }
+        catch (e) {
+            console.log(e);
+        }
+    }
     /* @@ chat GPT @@ */
     static doGptChat(req, res) {
         const messageObj = req.body;

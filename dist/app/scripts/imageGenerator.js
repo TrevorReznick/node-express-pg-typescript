@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateImage = void 0;
+exports.getImage = exports.generateImage = void 0;
 //import * as fs from "fs"
 //import { promisify } from "util"
 //import {RequestPrompt} from '../controllers/index'
@@ -58,3 +58,58 @@ function generateImage(caption) {
     });
 }
 exports.generateImage = generateImage;
+function getImage(caption) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const imageBytes = yield query({
+                inputs: caption,
+            });
+            // Generate a file name with the caption and save the image
+            const fileName = `${caption.replace(/\s+/g, "-")}.png`;
+            const filePath = "./test/" + fileName;
+            const encodedBuffer = Buffer.from(imageBytes).toString('base64');
+            console.log(encodedBuffer);
+            return encodedBuffer;
+        }
+        catch (error) {
+            console.log('function pass from here, is error');
+            console.log(error);
+        }
+        /*
+        try {
+    
+            const imageBytes = await query({
+                inputs: caption,
+            })
+            const fileName = `${caption.replace(/\s+/g, "-")}.png`
+        
+            // Send image file as response
+            res.writeHead(200, {
+              'Content-Type': 'image/png',
+              'Content-Length': imageBytes.length
+            });
+        
+            res.send(imageBytes);
+        
+          } catch (error) {
+            console.error(error);
+            res.status(500).end('Error generating image');
+          }
+        
+        }
+        
+        // Usage:
+        app.get('/image', async (req, res) => {
+        
+          const imageBytes = await generateImage('My Caption');
+        
+          await sendGeneratedImage(imageBytes, res);
+        
+        });
+        
+        // With curl:
+        curl http://localhost:3000/image > image.png
+        */
+    });
+}
+exports.getImage = getImage;

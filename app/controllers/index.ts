@@ -2,7 +2,7 @@ import { Model } from '../models/index'
 import Response from 'express';
 import {__email as msg, do_mail as mailer} from '../scripts/mailer'
 import { MailMessage } from '../interfaces/MailerModel'
-import { generateImage } from '../scripts/imageGenerator'
+import { generateImage, getImage } from '../scripts/imageGenerator'
 import { doChat } from '../scripts/chatGpt'
 
 
@@ -115,6 +115,23 @@ export class MainController {
             generateImage("photo of a bridge up a river")
             const message = 'Image was created successully! Check in your public path'
             res.send(message)
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+
+    
+
+    static getImage(req: RequestPrompt, res: Response) {
+        try {
+            //generateImage("photo of a great boat in a river")
+            console.log('call img buffer')
+            const image64base = getImage('photo of a great boat in a river')
+            //const message = 'Image was created successully! Check in your public path'
+            console.log('send img 64base')
+            console.log(image64base)
+            res.send(image64base)            
         } catch (e) {
             console.log(e)
         }
