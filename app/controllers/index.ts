@@ -129,8 +129,8 @@ export class MainController {
             console.log('call img buffer')
             const image64base = getImage('photo of a great boat in a river')
             //const message = 'Image was created successully! Check in your public path'
-            console.log('send img 64base')
-            console.log(image64base)
+            //console.log('send img 64base')
+            //console.log(image64base)
             res.send(image64base)            
         } catch (e) {
             console.log(e)
