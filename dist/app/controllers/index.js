@@ -122,9 +122,11 @@ class MainController {
     static doGptChat(req, res) {
         const messageObj = req.body;
         try {
-            (0, chatGpt_1.doChat)(messageObj);
+            let message = (0, chatGpt_1.doChat)(messageObj);
+            res.send(res);
         }
         catch (e) {
+            res.status(500).send(e);
         }
     }
 }

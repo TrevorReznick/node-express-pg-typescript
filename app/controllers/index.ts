@@ -131,7 +131,7 @@ export class MainController {
             //const message = 'Image was created successully! Check in your public path'
             //console.log('send img 64base')
             //console.log(image64base)
-            res.send(image64base)            
+            res.send(image64base)
         } catch (e) {
             console.log(e)
         }
@@ -145,9 +145,10 @@ export class MainController {
         const messageObj = req.body
 
         try {
-            doChat(messageObj)
+            let message = doChat(messageObj)
+            res.send(res)
         } catch(e) {
-
+            res.status(500).send(e)
         }
     }
 
