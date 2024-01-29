@@ -1,4 +1,5 @@
 import axios from 'axios'
+import fetch from 'node-fetch'
 
 export async function doChat(msgObj: any[]) {
 
@@ -34,7 +35,7 @@ export async function doChat(msgObj: any[]) {
             })
         })
 
-        let res = await req.json()
+        let res: any = await req.json()
         res = res.choices[0]
 
         return {
