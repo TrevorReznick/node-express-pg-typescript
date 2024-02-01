@@ -1,40 +1,12 @@
 import { Model } from '../models/index'
-import Response from 'express';
+//import Response from 'express';
 import {__email as msg, do_mail as mailer} from '../scripts/mailer'
 import { MailMessage } from '../interfaces/MailerModel'
 import { generateImage, getImage } from '../scripts/imageGenerator'
 import { doChat } from '../scripts/chatGpt'
+import { MessageType, PromptMsg} from '../types/types'
+import { RequestById,  RequestMail, RequestPrompt, Response} from '../interfaces/ResponsesRequests'
 
-
-/* @@ request interfaces @@ */
-interface RequestById {
-    params: {
-        id: number
-    }
-}
-
-interface RequestMail {    
-    body: {
-        email: string,        
-        subject: string,        
-        text: string,
-        name: string
-    }
-}
-
-type MessageType = {
-    role: string;
-    message: string;
-}
-
-export interface RequestPrompt {
-    body: MessageType[]
-}
-
-interface Response {
-    send: (body: any) => void
-    status: (code: number) => Response; 
-}
 
 export class MainController {
 
@@ -140,13 +112,14 @@ export class MainController {
 
     /* @@ chat GPT @@ */
 
-    static doGptChat(req:RequestPrompt, res: Response) {
+    static async doGptChat(req: any, res: Response) {
 
-        const messageObj = req.body
+        const msg: any = req.body        
 
         try {
-            let message = doChat(messageObj)
-            res.send(res)
+            let message = await doChat(msg)
+            console.log(message)
+            res.send(message)
         } catch(e) {
             res.status(500).send(e)
         }

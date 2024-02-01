@@ -13,7 +13,7 @@ dotenv.config()
 const app: Express = express()
 
 /* @@ init cors */
-const corsOptions: any = {
+const corsOptions = {
   origin: '*'
 }
 /*
