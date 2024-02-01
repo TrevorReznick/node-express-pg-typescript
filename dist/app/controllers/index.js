@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MainController = void 0;
 const index_1 = require("../models/index");
+//import Response from 'express';
 const mailer_1 = require("../scripts/mailer");
 const MailerModel_1 = require("../interfaces/MailerModel");
 const imageGenerator_1 = require("../scripts/imageGenerator");
@@ -120,14 +121,17 @@ class MainController {
     }
     /* @@ chat GPT @@ */
     static doGptChat(req, res) {
-        const messageObj = req.body;
-        try {
-            let message = (0, chatGpt_1.doChat)(messageObj);
-            res.send(res);
-        }
-        catch (e) {
-            res.status(500).send(e);
-        }
+        return __awaiter(this, void 0, void 0, function* () {
+            const msg = req.body;
+            try {
+                let message = yield (0, chatGpt_1.doChat)(msg);
+                console.log(message);
+                res.send(message);
+            }
+            catch (e) {
+                res.status(500).send(e);
+            }
+        });
     }
 }
 exports.MainController = MainController;
