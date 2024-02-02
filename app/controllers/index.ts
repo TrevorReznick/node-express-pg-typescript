@@ -84,7 +84,7 @@ export class MainController {
     static doImage(req: RequestPrompt, res: Response) {
 
         try {
-            generateImage("photo of a bridge up a river")
+            generateImage("i want a red dog and a green cat that claps and smile")
             const message = 'Image was created successully! Check in your public path'
             res.send(message)
         } catch (e) {
